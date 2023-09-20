@@ -71,10 +71,10 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
 
-        $employee = Employee::findOrFail($id);
+        $employee = Employee::findOrFail($request->id);
         $employee->update($request->all());
 
         return response()->json($employee);

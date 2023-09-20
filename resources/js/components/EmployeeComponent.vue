@@ -148,7 +148,6 @@ import axios from 'axios';
         },
         mounted() {
             this.showEmpList();
-            console.log('Component mounted.')
         },
         methods: {
             addEmployee() {
@@ -159,8 +158,10 @@ import axios from 'axios';
                     phone: this.phone,
                     profile: this.profile
                 }).then((res) => {
-                    console.log('res: ', res);
-                })
+                    alert("Employee information submitted successfully");
+                    window.location.reload();
+                });
+               
             },
             setEdit(id) {
                 axios.post('/get-employee-by-id', {id: id}).then((res) => {
@@ -177,14 +178,23 @@ import axios from 'axios';
             editEmployee() {
                 axios.post('/update-employee-by-id', {id: this.curId}).then((res) => {
                     console.log('success', res);
+                    alert("Employee information updated successfully");
+                    window.location.reload();
                 })
             },
-            deleteEmployee() {
-                confirm('Delete the Employee?')
+            deleteEmployee(employeeid) {
+                if(confirm('Delete the Employee?')) {
+                    axios.post('/delete-employee-by-id', {id: employeeid}).then((res) => {
+                        console.log('success', res);
+                        alert("Employee information delete successfully");
+                        window.location.reload();
+                    })
+                }
             },
             showEmpList() {
                 axios.get('/employee-list').then((response) => {
-                    console.log('chcek: ', response.data)
+                    console.log('chcek: ', response.data);
+                    // Assuming the submission was successful, display a success toast
                     this.employees = response.data
                 })
             }
