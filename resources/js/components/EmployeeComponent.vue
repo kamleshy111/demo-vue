@@ -59,6 +59,10 @@
             <input type="text" v-model="profile" id="position" name="position" required>
         </div>
         <div>
+            <label for="salary">salary:</label>
+            <input type="text" v-model="salary" id="salary" name="salary" required>
+        </div>
+        <div>
             <label for="phone">Phone:</label>
             <input type="tel" v-model="phone" id="phone" name="phone" pattern="[0-9]{10}" placeholder="1234567890">
             <small>Enter a 10-digit phone number (numeric characters only).</small>
@@ -98,6 +102,10 @@
         <div>
             <label for="position">Position:</label>
             <input type="text" v-model="profile" id="position" name="position" required>
+        </div>
+        <div>
+            <label for="salary">salary:</label>
+            <input type="text" v-model="salary" id="salary" name="salary" required>
         </div>
         <div>
             <label for="phone">Phone:</label>
@@ -143,6 +151,7 @@ import axios from 'axios';
                 email: '',
                 phone: '',
                 profile: '',
+                salary: '',
                 curId: ''
             }
         },
@@ -156,7 +165,8 @@ import axios from 'axios';
                     last_name: this.l_name,
                     email: this.email,
                     phone: this.phone,
-                    profile: this.profile
+                    profile: this.profile,
+                    salary:this.salary
                 }).then((res) => {
                     alert("Employee information submitted successfully");
                     window.location.reload();
@@ -172,11 +182,20 @@ import axios from 'axios';
                     this.email = this.storeEdit.email;
                     this.phone = this.storeEdit.phone;
                     this.profile = this.storeEdit.profile;
+                    this.salary = this.storeEdit.salary;
                     this.curId = this.storeEdit.id;
                 });
             },
             editEmployee() {
-                axios.post('/update-employee-by-id', {id: this.curId}).then((res) => {
+                axios.post('/update-employee-by-id', {
+                    id: this.curId,
+                    first_name: this.f_name,
+                    last_name: this.l_name,
+                    email: this.email,
+                    phone: this.phone,
+                    profile: this.profile,
+                    salary:this.salary
+                }).then((res) => {
                     console.log('success', res);
                     alert("Employee information updated successfully");
                     window.location.reload();
