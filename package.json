@@ -28,6 +28,7 @@
     },
     "dependencies": {
         "bootstrap-vue": "^2.23.1",
+        "jquery": "^3.7.1",
         "vue-toast-notification": "^3.1.1"
     }
 }

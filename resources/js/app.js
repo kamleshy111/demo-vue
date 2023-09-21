@@ -7,7 +7,8 @@
 import './bootstrap';
 import { createApp } from 'vue';
 import VueToast from 'vue-toast-notification';
-import 'vue-toast-notification/dist/theme-default.css';
+import 'vue-toast-notification/dist/theme-sugar.css';
+import 'jquery';
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
@@ -39,5 +40,9 @@ app.component('employee-component', EmployeeComponent);
  * an "id" attribute of "app". This element is included with the "auth"
  * scaffolding. Otherwise, you will need to add an element yourself.
  */
+global.jQuery = require('jquery');
+var $ = global.jQuery;
+window.$ = $;
+
 app.use(VueToast);
 app.mount('#app');

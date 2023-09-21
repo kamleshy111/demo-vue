@@ -1,7 +1,12 @@
 <template>
     <div>
-        <div class="text-center">
-            <button data-bs-toggle="modal" data-bs-target="#addEmployee" class="btn btn-success">Add Employee</button>
+        <div class="row p-2">
+          <div class="col">
+            <h3>Employee Manager</h3>
+          </div>
+          <div class="col">
+            <button data-bs-toggle="modal" data-bs-target="#addEmployee" class="btn btn-success" style="margin-left: 60%;">Add Employee</button>
+          </div>  
         </div>
       <table class="table table-striped">
         <thead>
@@ -24,8 +29,8 @@
             <td>{{ employee.salary }}</td>
             <td>{{ employee.phone }}</td>
             <td>
-              <button data-bs-toggle="modal" data-bs-target="#editEmployee" class="btn btn-primary" @click="setEdit(employee.id)">Edit</button>
-              <button class="btn btn-danger" @click="deleteEmployee(employee.id)">Delete</button>
+              <button data-bs-toggle="modal" data-bs-target="#editEmployee" class="me-2 btn btn-primary" @click="setEdit(employee.id)">Edit</button>
+              <button data-bs-toggle="modal" data-bs-target="#deleteEmployee" class="btn btn-danger" @click="curId=employee.id">Delete</button>
             </td>
           </tr>
         </tbody>
@@ -40,35 +45,33 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <h2>Employee Information</h2>
     <form @submit.prevent="addEmployee">
-        <div>
-            <label for="first-name">First Name:</label>
-            <input type="text" v-model="f_name" id="first-name" name="first-name" required>
+        <div class="d-flex justify-content-center align-items-center label-parent">
+            <label class="m-2" for="first-name">First Name:</label>
+            <input class="m-2" type="text" v-model="f_name" id="first-name" name="first-name" required>
         </div>
-        <div>
-            <label for="last-name">Last Name:</label>
-            <input type="text" v-model="l_name" id="last-name" name="last-name" required>
+        <div class="d-flex justify-content-center align-items-center label-parent">
+            <label class="m-2" for="last-name">Last Name:</label>
+            <input class="m-2" type="text" v-model="l_name" id="last-name" name="last-name" required>
         </div>
-        <div>
-            <label for="email">Email:</label>
-            <input type="email" v-model="email" id="email" name="email" required>
+        <div class="d-flex justify-content-center align-items-center label-parent">
+            <label class="m-2" for="email">Email:</label>
+            <input class="m-2" type="email" v-model="email" id="email" name="email" required>
         </div>
-        <div>
-            <label for="position">Position:</label>
-            <input type="text" v-model="profile" id="position" name="position" required>
+        <div class="d-flex justify-content-center align-items-center label-parent">
+            <label class="m-2" for="position">Position:</label>
+            <input class="m-2" type="text" v-model="profile" id="position" name="position" required>
         </div>
-        <div>
-            <label for="salary">salary:</label>
-            <input type="text" v-model="salary" id="salary" name="salary" required>
+        <div class="d-flex justify-content-center align-items-center label-parent">
+            <label class="m-2" for="salary">salary:</label>
+            <input class="m-2" type="text" v-model="salary" id="salary" name="salary" required>
         </div>
-        <div>
-            <label for="phone">Phone:</label>
-            <input type="tel" v-model="phone" id="phone" name="phone" pattern="[0-9]{10}" placeholder="1234567890">
-            <small>Enter a 10-digit phone number (numeric characters only).</small>
+        <div class="d-flex justify-content-center align-items-center label-parent">
+            <label class="m-2" for="phone">Phone:</label>
+            <input class="m-2" type="tel" v-model="phone" id="phone" name="phone" pattern="[0-9]{10}">
         </div>
-        <div>
-            <input type="submit" value="Submit">
+        <div class="d-flex justify-content-center align-items-center">
+            <input class="m-2" type="submit" value="Submit">
         </div>
     </form>
       </div>
@@ -82,38 +85,36 @@
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="editEmployeeLabel">Edit Employee</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" @click="resetForm" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <h2>Employee Information</h2>
-    <form @submit.prevent="editEmployee()">
-        <div>
-            <label for="first-name">First Name:</label>
-            <input type="text" v-model="f_name" id="first-name" name="first-name" required>
+        <form @submit.prevent="editEmployee">
+        <div class="d-flex justify-content-center align-items-center label-parent">
+            <label class="m-2" for="first-name">First Name:</label>
+            <input class="m-2" type="text" v-model="f_name" id="first-name" name="first-name" required>
         </div>
-        <div>
-            <label for="last-name">Last Name:</label>
-            <input type="text" v-model="l_name" id="last-name" name="last-name" required>
+        <div class="d-flex justify-content-center align-items-center label-parent">
+            <label class="m-2" for="last-name">Last Name:</label>
+            <input class="m-2" type="text" v-model="l_name" id="last-name" name="last-name" required>
         </div>
-        <div>
-            <label for="email">Email:</label>
-            <input type="email" v-model="email" id="email" name="email" required>
+        <div class="d-flex justify-content-center align-items-center label-parent">
+            <label class="m-2" for="email">Email:</label>
+            <input class="m-2" type="email" v-model="email" id="email" name="email" required>
         </div>
-        <div>
-            <label for="position">Position:</label>
-            <input type="text" v-model="profile" id="position" name="position" required>
+        <div class="d-flex justify-content-center align-items-center label-parent">
+            <label class="m-2" for="position">Position:</label>
+            <input class="m-2" type="text" v-model="profile" id="position" name="position" required>
         </div>
-        <div>
-            <label for="salary">salary:</label>
-            <input type="text" v-model="salary" id="salary" name="salary" required>
+        <div class="d-flex justify-content-center align-items-center label-parent">
+            <label class="m-2" for="salary">salary:</label>
+            <input class="m-2" type="text" v-model="salary" id="salary" name="salary" required>
         </div>
-        <div>
-            <label for="phone">Phone:</label>
-            <input type="tel" v-model="phone" id="phone" name="phone" pattern="[0-9]{10}" placeholder="1234567890">
-            <small>Enter a 10-digit phone number (numeric characters only).</small>
+        <div class="d-flex justify-content-center align-items-center label-parent">
+            <label class="m-2" for="phone">Phone:</label>
+            <input class="m-2" type="tel" v-model="phone" id="phone" name="phone" pattern="[0-9]{10}">
         </div>
-        <div>
-            <input type="submit" value="Submit">
+        <div class="d-flex justify-content-center align-items-center">
+            <input class="m-2" type="submit" value="Submit">
         </div>
     </form>
       </div>
@@ -130,7 +131,11 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        Delete Employee?
+        This Action will delete Employee!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" @click="deleteEmployee">Delete</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
       </div>
     </div>
   </div>
@@ -168,14 +173,18 @@ import axios from 'axios';
                     profile: this.profile,
                     salary:this.salary
                 }).then((res) => {
-                    alert("Employee information submitted successfully");
-                    window.location.reload();
+                  $('#addEmployee').modal('hide');
+                  this.$toast.open({
+                        message: 'Employee Added Successfully!',
+                        type: 'success',
+                        position: 'top'
+                    });
+                    this.showEmpList();
                 });
                
             },
             setEdit(id) {
                 axios.post('/get-employee-by-id', {id: id}).then((res) => {
-                    console.log(res.data)
                     this.storeEdit = res.data;
                     this.f_name = this.storeEdit.first_name;
                     this.l_name = this.storeEdit.last_name;
@@ -196,27 +205,48 @@ import axios from 'axios';
                     profile: this.profile,
                     salary:this.salary
                 }).then((res) => {
-                    console.log('success', res);
-                    alert("Employee information updated successfully");
-                    window.location.reload();
+                    $('#editEmployee').modal('hide');
+                    this.$toast.open({
+                        message: 'Employee Data Updated Successfully!',
+                        type: 'success',
+                        position: 'top'
+                    });
+                    this.showEmpList();
+                    this.resetForm();
                 })
             },
-            deleteEmployee(employeeid) {
-                if(confirm('Delete the Employee?')) {
-                    axios.post('/delete-employee-by-id', {id: employeeid}).then((res) => {
-                        console.log('success', res);
-                        alert("Employee information delete successfully");
-                        window.location.reload();
-                    })
-                }
+            deleteEmployee() {
+              axios.post('/delete-employee-by-id', {id: this.curId}).then((res) => {
+                  $('#deleteEmployee').modal('hide');
+                  this.$toast.open({
+                  message: 'Employee Removed Successfully!',
+                  type: 'success',
+                  position: 'top'
+              });
+              this.showEmpList();
+              })
             },
             showEmpList() {
                 axios.get('/employee-list').then((response) => {
-                    console.log('chcek: ', response.data);
-                    // Assuming the submission was successful, display a success toast
-                    this.employees = response.data
+                    this.employees = response.data;
                 })
+            },
+            resetForm() {
+              this.f_name = '';
+              this.l_name = '';
+              this.email = '';
+              this.phone = '';
+              this.profile = '';
+              this.salary = '';
+              this.curId = '';
             }
         }
     }
 </script>
+
+<style scoped>
+.label-parent label {
+  display: inline-block;
+  width: 100px;
+}
+</style>
