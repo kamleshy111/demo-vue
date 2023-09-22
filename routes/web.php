@@ -14,7 +14,7 @@ use App\Http\Controllers\EmployeeController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Route::get('/employees', [EmployeeController::class, 'index'])->name('index');
@@ -23,3 +23,7 @@ Route::post('/employee-add', [EmployeeController::class, 'add'])->name('add');
 Route::post('/get-employee-by-id', [EmployeeController::class, 'show']);
 Route::post('/update-employee-by-id', [EmployeeController::class, 'update']);
 Route::post('/delete-employee-by-id', [EmployeeController::class, 'destroy']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
